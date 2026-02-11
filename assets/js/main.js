@@ -8,8 +8,14 @@ hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
 
-    // Reset animations when closing
-    if (!navMenu.classList.contains("active")) {
+    // Apply animations when opening
+    if (navMenu.classList.contains("active")) {
+        navItems.forEach((item, index) => {
+            const delay = 0.2 + (index * 0.1); // Start at 0.2s, add 0.1s for each item
+            item.style.animation = `slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards ${delay}s`;
+        });
+    } else {
+        // Reset animations when closing
         navItems.forEach(item => {
             item.style.animation = 'none';
         });
